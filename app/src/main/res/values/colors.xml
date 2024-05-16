@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#303030</color>
+    <color name="white">#DDDDDD</color>
+    <color name="text_color">#FFF</color>
+    <color name="text_colorBlack">#000</color>
+    <color name="corButton">#31757E</color>
+    <color name="corDark">#66ACB3</color>
+</resources>

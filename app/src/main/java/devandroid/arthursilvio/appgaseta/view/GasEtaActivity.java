@@ -1,10 +1,12 @@
 package devandroid.arthursilvio.appgaseta.view;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,19 +46,19 @@ public class GasEtaActivity extends AppCompatActivity {
         buttonCalc.setOnClickListener(v -> {
             boolean isDataOk = true;
 
-            if (TextUtils.isEmpty(editEta.getText())){
+            if (TextUtils.isEmpty(editEta.getText())) {
                 editEta.setError("* OBRIGATÓRIO");
                 editEta.requestFocus();
                 isDataOk = false;
             }
 
-            if (TextUtils.isEmpty(editGas.getText())){
+            if (TextUtils.isEmpty(editGas.getText())) {
                 editGas.setError("* OBRIGATÓRIO");
                 editGas.requestFocus();
                 isDataOk = false;
             }
 
-            if (isDataOk){
+            if (isDataOk) {
 
                 mEta = Double.parseDouble(editEta.getText().toString());
                 mGas = Double.parseDouble(editGas.getText().toString());
@@ -64,9 +66,12 @@ public class GasEtaActivity extends AppCompatActivity {
                 recommendation = UtilGasEta.calculateBestOption(mEta, mGas);
 
                 txtResult.setText(recommendation);
-            }else{
+
+                buttonSave.setEnabled(true);
+            } else {
                 Toast.makeText(GasEtaActivity.this, "Digite os dados corretamente...",
                         Toast.LENGTH_LONG).show();
+                buttonSave.setEnabled(false);
             }
 
         });
@@ -74,6 +79,7 @@ public class GasEtaActivity extends AppCompatActivity {
         buttonClean.setOnClickListener(v -> {
             editGas.setText("");
             editEta.setText("");
+            buttonSave.setEnabled(false);
         });
 
         buttonFinish.setOnClickListener(v -> {

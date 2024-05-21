@@ -10,8 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import devandroid.arthursilvio.appgaseta.R;
 import devandroid.arthursilvio.appgaseta.apoio.UtilGasEta;
+import devandroid.arthursilvio.appgaseta.model.Fuel;
 
 public class GasEtaActivity extends AppCompatActivity {
+
+    Fuel fuelEta;
+    Fuel fuelGas;
     EditText editEta;
     EditText editGas;
     Button buttonCalc;
@@ -79,6 +83,19 @@ public class GasEtaActivity extends AppCompatActivity {
         });
 
         buttonSave.setOnClickListener(v -> {
+
+            //TODO: DESABILITAR  O BOTÃO SALVAR
+
+            fuelGas = new Fuel();
+            fuelEta = new Fuel();
+
+            fuelGas.setNameFuel("Gasolina");
+            fuelGas.setPriceFuel(mGas);
+            fuelGas.setRecommendation(UtilGasEta.calculateBestOption(mEta, mGas));
+
+            fuelEta.setNameFuel("Etanol");
+            fuelEta.setRecommendation(UtilGasEta.calculateBestOption(mEta, mGas));
+            fuelEta.setPriceFuel(mEta);
 
         });
 
